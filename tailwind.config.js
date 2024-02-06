@@ -20,6 +20,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        theme: {
+          DEFAULT: "#0104AA",
+          foreground: "#4795E6",
+          hover: "#0042D5"
+
+
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

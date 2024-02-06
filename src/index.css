@@ -86,6 +86,7 @@ body {
 	width: 100%;
 }
 
+
 @keyframes loading {
 	from {
 		transform: translateX(-100%);
