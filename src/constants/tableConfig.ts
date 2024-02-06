@@ -30,7 +30,7 @@ export const TRANSACTION_TABLE_CONFIG: TableColumnConfig[] = [
 	{ header: 'Type', key: 'type', style: 'pl-2 text-left justify-end text-sm', format: 'string' },
 	{ header: 'Customer', key: 'customer', style: 'text-left justify-end text-sm', format: 'string' },
 	{ header: 'Merchant', key: 'merchant', style: 'text-left justify-end text-sm', format: 'string' },
-	{ header: 'Amount', key: 'merchant', style: 'text-right justify-end text-sm', format: 'currency' },
+	{ header: 'Amount', key: 'amount', style: 'text-right justify-end text-sm', format: 'currency' },
 	{ header: 'Created At', key: 'created_at', style: ' px-2 text-left text-sm ', format: 'date' },
 	{ header: 'Updated At', key: 'updated_at', style: 'text-left text-sm flex-1 pr-2', format: 'date' }
 ];

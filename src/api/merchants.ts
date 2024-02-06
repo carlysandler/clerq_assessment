@@ -8,7 +8,7 @@ export const fetchMerchants = async (
 	params: ListRequestParams
 ): Promise<IDataPaginationResponse<IMerchant>> => {
 	try {
-		const response = await axios.get(`${BASE_URL}/merchants`, {
+		const response = await axios.get(`${BASE_URL}/merchants/`, {
 			params
 		});
 
