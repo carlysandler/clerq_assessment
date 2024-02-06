@@ -1,0 +1,811 @@
+openapi: 3.0.3
+info:
+  title: ACME Payments API
+  version: v9271
+  description: The incredible ACME Payments API, powered by the latest 1972 tech.
+paths:
+  /tech_assessment/customers/:
+    get:
+      operationId: customers_list
+      parameters:
+        - in: query
+          name: created_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: email
+          schema:
+            type: string
+        - in: query
+          name: id
+          schema:
+            type: string
+            format: uuid
+        - name: ordering
+          required: false
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          description: A page number within the paginated result set.
+          schema:
+            type: integer
+        - in: query
+          name: phone
+          schema:
+            type: string
+        - in: query
+          name: updated_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lte
+          schema:
+            type: string
+            format: date-time
+      tags:
+        - customers
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedCustomerList"
+          description: ""
+  /tech_assessment/customers/{id}/:
+    get:
+      operationId: customers_retrieve
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: A UUID string identifying this customer.
+          required: true
+      tags:
+        - customers
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+          description: ""
+  /tech_assessment/merchants/:
+    get:
+      operationId: merchants_list
+      parameters:
+        - in: query
+          name: created_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lte
+          schema:
+            type: string
+            format: date-time
+        - name: ordering
+          required: false
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          description: A page number within the paginated result set.
+          schema:
+            type: integer
+        - in: query
+          name: updated_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lte
+          schema:
+            type: string
+            format: date-time
+      tags:
+        - merchants
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedMerchantList"
+          description: ""
+  /tech_assessment/merchants/{id}/:
+    get:
+      operationId: merchants_retrieve
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: A UUID string identifying this merchant.
+          required: true
+      tags:
+        - merchants
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Merchant"
+          description: ""
+  /tech_assessment/orders/:
+    get:
+      operationId: orders_list
+      parameters:
+        - in: query
+          name: created_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: customer
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: merchant
+          schema:
+            type: string
+            format: uuid
+        - name: ordering
+          required: false
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          description: A page number within the paginated result set.
+          schema:
+            type: integer
+        - in: query
+          name: parent_order
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: total_amount
+          schema:
+            type: number
+        - in: query
+          name: total_amount__gt
+          schema:
+            type: number
+        - in: query
+          name: total_amount__gte
+          schema:
+            type: number
+        - in: query
+          name: total_amount__lt
+          schema:
+            type: number
+        - in: query
+          name: total_amount__lte
+          schema:
+            type: number
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - PURCHASE
+              - REFUND
+          description: Whether the Order is for a PURCHASE or a REFUND
+        - in: query
+          name: updated_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lte
+          schema:
+            type: string
+            format: date-time
+      tags:
+        - orders
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedOrderList"
+          description: ""
+  /tech_assessment/orders/{id}/:
+    get:
+      operationId: orders_retrieve
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: A UUID string identifying this order.
+          required: true
+      tags:
+        - orders
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: ""
+  /tech_assessment/transactions/:
+    get:
+      operationId: transactions_list
+      parameters:
+        - in: query
+          name: amount
+          schema:
+            type: number
+        - in: query
+          name: amount__gt
+          schema:
+            type: number
+        - in: query
+          name: amount__gte
+          schema:
+            type: number
+        - in: query
+          name: amount__lt
+          schema:
+            type: number
+        - in: query
+          name: amount__lte
+          schema:
+            type: number
+        - in: query
+          name: created_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: created_at__lte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: customer
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: merchant
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: order
+          schema:
+            type: string
+            format: uuid
+        - name: ordering
+          required: false
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
+        - name: page
+          required: false
+          in: query
+          description: A page number within the paginated result set.
+          schema:
+            type: integer
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - PURCHASE
+              - REFUND
+        - in: query
+          name: updated_at
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__gte
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lt
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: updated_at__lte
+          schema:
+            type: string
+            format: date-time
+      tags:
+        - transactions
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedTransactionList"
+          description: ""
+  /tech_assessment/transactions/{id}/:
+    get:
+      operationId: transactions_retrieve
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: A UUID string identifying this transaction.
+          required: true
+      tags:
+        - transactions
+      security:
+        - basicAuth: []
+        - {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+          description: ""
+components:
+  schemas:
+    Customer:
+      type: object
+      description: |-
+        A Customer record represents a Merchant's Customer, i.e. a person/entity
+        that bought something from the Merchant. ACME Payments processes payments
+        between the two.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was created.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was last updated.
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        phone:
+          type: string
+          maxLength: 32
+        address:
+          type: string
+          nullable: true
+        email:
+          type: string
+          maxLength: 254
+      required:
+        - created_at
+        - email
+        - first_name
+        - id
+        - last_name
+        - phone
+        - updated_at
+    Merchant:
+      type: object
+      description: |-
+        A Merchant record represents a company using ACME Payments services
+
+        Each Merchant can have multiple Orders, which can have multiple
+        transactions (payments, refunds, etc).
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was created.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was last updated.
+        name:
+          type: string
+          maxLength: 255
+      required:
+        - created_at
+        - id
+        - name
+        - updated_at
+    Order:
+      type: object
+      description: |-
+        An Order is a statement of products/services exchanged between the Merchant
+        and the Customer. Each Order will have associated Transactions representing
+        transfer of funds.
+
+        Due to complex business domains, an Order can have multiple transactions,
+        in both directions (i.e. the Merchant might transfer funds back to the
+        Customer).
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        transactions:
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was created.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was last updated.
+        type:
+          allOf:
+            - $ref: "#/components/schemas/TypeEnum"
+          description: Whether the Order is for a PURCHASE or a REFUND
+        items_data:
+          type: object
+          additionalProperties: {}
+          description:
+            A list of items for the purchase order. Should be a list of
+            objects. Keys should be `name` with the item name, `quantity` with the
+            item count and `unit_price` with the price per unit.
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,2})?$
+          description:
+            To total amount to be charged. This is the value that will
+            be debited from the customer
+        trace_id:
+          type: string
+          description:
+            The trace id for the Purchase Order. Use this field to track
+            records on Clerq.
+          maxLength: 128
+        parent_order:
+          type: string
+          format: uuid
+          nullable: true
+          description: The parent order. Only set if type is REFUND.
+        customer:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+          format: uuid
+      required:
+        - created_at
+        - customer
+        - id
+        - items_data
+        - merchant
+        - total_amount
+        - trace_id
+        - transactions
+        - type
+        - updated_at
+    PaginatedCustomerList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Customer"
+    PaginatedMerchantList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Merchant"
+    PaginatedOrderList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Order"
+    PaginatedTransactionList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+    Transaction:
+      type: object
+      description: |-
+        Represents an exchange of funds between a Merchant and a Customer.
+
+        A positive amount means that funds where moved from the Customer to the
+        Merchant. A negative amount means that the Merchant moved funds to a
+        Customer. This is also indicated by the `type` fields, where PURCHASE means
+        movement towards the Merchant, and REFUND towards the Customer.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was created.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date and time when the record was last updated.
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,2})?$
+        type:
+          $ref: "#/components/schemas/TypeEnum"
+        customer:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+          format: uuid
+        order:
+          type: string
+          format: uuid
+      required:
+        - amount
+        - created_at
+        - customer
+        - id
+        - merchant
+        - order
+        - type
+        - updated_at
+    TypeEnum:
+      enum:
+        - PURCHASE
+        - REFUND
+      type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+servers:
+  - url: https://api-engine-dev.clerq.io
+    description: Foo
