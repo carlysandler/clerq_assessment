@@ -1,1 +1,2 @@
-export const BASE_URL = "https://api-engine-edv.clerq.io/tech_assesment"
+export const BASE_URL = "https://api-engine-dev.clerq.io/tech_assessment"
+export const PAGE = 1;

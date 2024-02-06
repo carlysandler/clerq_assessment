@@ -86,10 +86,10 @@ export interface TableColumnConfig {
 	key: string;
 	style: string;
 	hideAt?: string;
-	format?: "currency" | "percentage" | "string" | "number";
+	format?: "currency" | "percentage" | "string" | "number" | "date";
 }
 
-export type IPossibleDataType = IMerchant | ICustomer | IFBOAccount | IOrder | ITransaction;
+export type IPossibleDataType = IMerchant | ICustomer | IOrder | ITransaction;
 export type PaginatedCustomerList = IPaginatedList<ICustomer>;
 export type PaginatedMerchantList = IPaginatedList<IMerchant>;
 export type PaginatedOrderList = IPaginatedList<IOrder>;
@@ -111,7 +111,7 @@ export interface ListRequestParams {
 	phone?: string;
 	id?: UUID;
 	ordering?: string;
-	page?: number;
+	page: number;
 	total_amount?: number;
 	total_amount__gt?: number;
 	total_amount__gte?: number;

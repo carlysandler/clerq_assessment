@@ -2,13 +2,13 @@
 import axios from 'axios';
 import { BASE_URL } from '@/constants/api';
 import { transformApiResponse } from '@/utils/pagination';
-import type { IDataPaginationResponse, ICustomer } from '@/types';
+import type { IDataPaginationResponse, ICustomer, ListRequestParams } from '@/types';
 
 export const fetchCustomers = async (
-	params: any
+	params: ListRequestParams
 ): Promise<IDataPaginationResponse<ICustomer>> => {
 	try {
-		const response = await axios.get(`${BASE_URL}/customers`, {
+		const response = await axios.get(`${BASE_URL}/customers/`, {
 			params
 		});
 
@@ -30,7 +30,7 @@ export const getCustomer = async (
 	params: ICustomer["id"]
 ): Promise<ICustomer> => {
 	try {
-		return await axios.get(`${BASE_URL}/${params}`);
+		return await axios.get(`${BASE_URL}/customers/${params}/`);
 
 	} catch (err) {
 		if (axios.isAxiosError(err)) {

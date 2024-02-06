@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import DataSliceReducer from "@/store//features/dataSlice"
 
 export const makeStore = () => {
 	return configureStore({
 		reducer: {
+			tableData: DataSliceReducer
 		},
 	});
 };

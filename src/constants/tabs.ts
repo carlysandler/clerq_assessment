@@ -5,7 +5,7 @@ export const TABS = [
 	},
 	{
 		name: "Merchants",
-		route: "/merchants"
+		route: "/"
 	},
 	{
 		name: "Customers",

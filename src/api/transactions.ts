@@ -2,13 +2,13 @@
 import axios from 'axios';
 import { BASE_URL } from '@/constants/api';
 import { transformApiResponse } from '@/utils/pagination';
-import type { IDataPaginationResponse, ITransaction } from '@/types';
+import type { IDataPaginationResponse, ITransaction, ListRequestParams } from '@/types';
 
-export const fetchMerchants = async (
-	params: any
+export const fetchTransactions = async (
+	params: ListRequestParams
 ): Promise<IDataPaginationResponse<ITransaction>> => {
 	try {
-		const response = await axios.get(`${BASE_URL}/customers`, {
+		const response = await axios.get(`${BASE_URL}/transactions`, {
 			params
 		});
 
@@ -26,11 +26,11 @@ export const fetchMerchants = async (
 	}
 }
 
-export const getMerchant = async (
+export const getTransaction = async (
 	params: ITransaction["id"]
 ): Promise<ITransaction> => {
 	try {
-		return await axios.get(`${BASE_URL}/${params}`);
+		return await axios.get(`${BASE_URL}/transactions/${params}`);
 
 	} catch (err) {
 		if (axios.isAxiosError(err)) {

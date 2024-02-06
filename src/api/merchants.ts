@@ -2,13 +2,13 @@
 import axios from 'axios';
 import { BASE_URL } from '@/constants/api';
 import { transformApiResponse } from '@/utils/pagination';
-import type { IDataPaginationResponse, IMerchant } from '@/types';
+import type { IDataPaginationResponse, IMerchant, ListRequestParams } from '@/types';
 
 export const fetchMerchants = async (
-	params: any
+	params: ListRequestParams
 ): Promise<IDataPaginationResponse<IMerchant>> => {
 	try {
-		const response = await axios.get(`${BASE_URL}/customers`, {
+		const response = await axios.get(`${BASE_URL}/merchants`, {
 			params
 		});
 
@@ -30,7 +30,7 @@ export const getMerchant = async (
 	params: IMerchant["id"]
 ): Promise<IMerchant> => {
 	try {
-		return await axios.get(`${BASE_URL}/${params}`);
+		return await axios.get(`${BASE_URL}/merchants/${params}`);
 
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
